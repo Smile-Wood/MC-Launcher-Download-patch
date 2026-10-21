@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="PCL.Injector.Core/PCL.Injector.Core.csproj" />
+  <Project Path="PCL.Injector.Payload/PCL.Injector.Payload.csproj" />
+  <Project Path="PCL.Injector.Cli/PCL.Injector.Cli.csproj" />
+  <Project Path="PCL.Injector.Gui/PCL.Injector.Gui.csproj" />
+</Solution>

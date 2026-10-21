@@ -1,0 +1,7 @@
+﻿<Application x:Class="PCL.Injector.Gui.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- 不设 StartupUri: 窗口由 App.OnStartup 按三态决策唯一创建, 避免双窗口 -->
+    <Application.Resources>
+    </Application.Resources>
+</Application>

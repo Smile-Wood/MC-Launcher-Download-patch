@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>PCL.Injector.Gui</RootNamespace>
+    <AssemblyName>PCL-Injector-Gui</AssemblyName>
+    <!-- WPF 里引用 Windows Forms 类型, 允许跨线程 NotifyIcon 调用 -->
+    <ApplicationIcon />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PCL.Injector.Core\PCL.Injector.Core.csproj" />
+    <ProjectReference Include="..\PCL.Injector.Payload\PCL.Injector.Payload.csproj" />
+  </ItemGroup>
+
+  <!-- 嵌入 Payload 资源, 启动时解压到 %LOCALAPPDATA%\PCL-Injector\runtime\ -->
+  <ItemGroup>
+    <EmbeddedResource Include="..\PCL.Injector.Payload\bin\Release\netstandard2.0\PCL.Injector.Payload.dll" LogicalName="Payload.dll" Visible="false" />
+    <EmbeddedResource Include="..\PCL.Injector.Payload\bin\Release\net48\PCL.Injector.Payload.dll" LogicalName="PayloadFW.dll" Visible="false" />
+    <EmbeddedResource Include="..\PCL.Injector.Payload\bin\Release\net48\0Harmony.dll" LogicalName="0Harmony.dll" Visible="false" />
+    <EmbeddedResource Include="..\PCL.Injector.Cli\assets\0HarmonyCE.dll" LogicalName="0HarmonyCE.dll" Visible="false" />
+    <EmbeddedResource Include="..\hmcl-agent\build\hmcl-agent.jar" LogicalName="hmcl-agent.jar" Visible="false" />
+  </ItemGroup>
+
+</Project>

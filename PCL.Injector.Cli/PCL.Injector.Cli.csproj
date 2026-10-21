@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <RootNamespace>PCL.Injector.Cli</RootNamespace>
+    <AssemblyName>PCL-Injector</AssemblyName>
+    <!-- 不用自定义 ApplicationManifest: single-file 打包与自定义 manifest 组合会产生 SxS 损坏的 exe.
+         apphost 默认 manifest 即 asInvoker (普通权限运行) -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PCL.Injector.Core\PCL.Injector.Core.csproj" />
+    <ProjectReference Include="..\PCL.Injector.Payload\PCL.Injector.Payload.csproj" />
+  </ItemGroup>
+
+  <!-- 嵌入 Payload 资源, 启动时解压到 %LOCALAPPDATA%\PCL-Injector\runtime\
+       0Harmony.dll  = net48 变体 (PCL 原版 .NET FW 4.8)
+       0HarmonyCE.dll = net8.0 变体 (PCL-CE .NET 10 —— net472 变体在 .NET 10 上 HarmonySharedState 初始化崩溃) -->
+  <ItemGroup>
+    <EmbeddedResource Include="..\PCL.Injector.Payload\bin\Release\netstandard2.0\PCL.Injector.Payload.dll" LogicalName="Payload.dll" Visible="false" />
+    <EmbeddedResource Include="..\PCL.Injector.Payload\bin\Release\net48\PCL.Injector.Payload.dll" LogicalName="PayloadFW.dll" Visible="false" />
+    <EmbeddedResource Include="..\PCL.Injector.Payload\bin\Release\net48\0Harmony.dll" LogicalName="0Harmony.dll" Visible="false" />
+    <EmbeddedResource Include="assets\0HarmonyCE.dll" LogicalName="0HarmonyCE.dll" Visible="false" />
+    <EmbeddedResource Include="..\hmcl-agent\build\hmcl-agent.jar" LogicalName="hmcl-agent.jar" Visible="false" />
+  </ItemGroup>
+
+</Project>

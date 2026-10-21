@@ -1,0 +1,22 @@
+# ===== 构建产物 =====
+[Bb]in/
+[Oo]bj/
+dist/
+dist-gui/
+publish/
+
+# ===== 本地测试文件 (严禁提交任何启动器二进制) =====
+testsource/
+
+# ===== 历史备份 / 编译中间产物 =====
+*.Backup/
+hmcl-agent/build/classes/
+
+# ===== IDE / 用户文件 =====
+.vs/
+.idea/
+*.user
+*.suo
+
+# ===== 运行日志 (运行时日志在 %LOCALAPPDATA%\PCL-Injector, 此处防御性排除) =====
+*.log
